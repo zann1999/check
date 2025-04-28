@@ -38,10 +38,22 @@ async function checkNearQuests() {
     const hasJourneys = $("h2:contains('Journeys')").length > 0;
     const hasQuestsWithRewards =
       $("h2:contains('Quests with Rewards')").length > 0;
-
-    if (hasNearOnboarding || hasJourneys || hasQuestsWithRewards) {
+    if (hasQuestsWithRewards) {
+      const hasSpecialDiv = $("div.flex.flex-col.p-4.pb-1.space-y-0").length;
+      if (hasSpecialDiv == 1) {
+        const hasStakeLink =
+          $("a:contains('Stake $BRRR for BOOSTED Rewards')").length > 0;
+        if (hasStakeLink == 1) {
+        } else {
+          sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
+        }
+      } else {
+        sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
+      }
+    }
+    if (hasNearOnboarding || hasJourneys) {
       console.log("🚀 Phát hiện thay đổi Near!");
-      sendNotification("🚀 Đtesttsadsads!");
+      sendNotification("🚀 Đã phát hiện thay đổi Near!");
     } else {
       console.log("Near chưa có thay đổi");
     }
@@ -91,23 +103,30 @@ async function checkSeiDefiJourney() {
   }
 }
 
+// Hàm kiểm tra quest sẽ chạy khi có yêu cầu từ HTTP request
 async function abc() {
-  while (true) {
-    console.log("=== CHECKING Flipside Quests ===");
-    sendNotification("🚀 Đtesttsadsads!");
+  console.log("=== CHECKING Flipside Quests ===");
 
-    await checkNearQuests();
-    await checkSeiQuests();
-    await checkSeiDefiJourney();
-  }
+  sendNotification("🚀 Đang kiểm tra quests...");
+
+  await checkNearQuests();
+  await checkSeiQuests();
+  await checkSeiDefiJourney();
 }
 
-// Khởi động express server để giữ app chạy
-app.get("/", (req, res) => {
-  res.send("Server is running...");
+// Endpoint để bắt đầu kiểm tra quests
+app.get("/start-check", async (req, res) => {
+  try {
+    console.log("Truy cập vào endpoint để bắt đầu kiểm tra");
+    await abc();
+    res.send("Đã bắt đầu kiểm tra quests!");
+  } catch (error) {
+    console.error("Lỗi khi chạy kiểm tra:", error);
+    res.status(500).send("Có lỗi xảy ra khi kiểm tra!");
+  }
 });
 
+// Khởi động express server
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-  abc(); // Gọi function abc khi server start
+  console.log(`Server đang chạy trên cổng ${PORT}`);
 });
