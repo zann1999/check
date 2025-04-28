@@ -135,13 +135,13 @@ async function checkFLOWQuests() {
       $("h2:contains('Quests with Rewards')").length > 0;
     const hasJourneys = $("h2:contains('Journeys')").length > 0;
     if (hasQuestsWithRewards || hasJourneys) {
-      console.log("🚀 Phát hiện new QUEST SEI!");
+      console.log("🚀 Phát hiện new QUEST FLOW!");
       for (let i = 0; i < 20; i++) {
         sendNotification("🚀 Đã phát hiện New Quest FLOW!");
         await delay(15000);
       }
     } else {
-      console.log("SEI chưa có thay đổi");
+      console.log("FLOW chưa có thay đổi");
     }
   } catch (err) {
     console.error("❌ Lỗi khi kiểm tra SEI:", err.message);
@@ -158,13 +158,13 @@ async function checkKAIAQuests() {
     const hasJourneys = $("h2:contains('Journeys')").length > 0;
 
     if (hasQuestsWithRewards || hasJourneys) {
-      console.log("🚀 Phát hiện new QUEST SEI!");
+      console.log("🚀 Phát hiện new QUEST KAIA!");
       for (let i = 0; i < 20; i++) {
         sendNotification("🚀 Đã phát hiện New Quest KAIA!");
         await delay(15000);
       }
     } else {
-      console.log("SEI chưa có thay đổi");
+      console.log("KAIA chưa có thay đổi");
     }
   } catch (err) {
     console.error("❌ Lỗi khi kiểm tra SEI:", err.message);
