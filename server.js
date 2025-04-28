@@ -5,7 +5,9 @@ const express = require("express");
 
 const app = express();
 const PORT = 3000;
-
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 const pushover = new Push({
   token: "ac8jh3ku2ust97s7j47oa7ug4h8r48", // Thay bằng API Token của bạn
   user: "u1pvc4wjjwefey9sqnrfx3axzijyzn", // Thay bằng User Key của bạn
@@ -73,7 +75,10 @@ async function checkSeiQuests() {
 
     if (!hasQuestsWithRewards) {
       console.log("🚀 Phát hiện new QUEST SEI!");
-      sendNotification("🚀 Đã phát hiện New Quest SEI!");
+      for (let i = 0; i < 100; i++) {
+        sendNotification("🚀 Đã phát hiện New Quest SEI!");
+        await delay(16000);
+      }
     } else {
       console.log("SEI chưa có thay đổi");
     }
