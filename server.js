@@ -184,7 +184,7 @@ async function abc() {
 // Endpoint để bắt đầu kiểm tra quests
 app.get("/start-check", async (req, res) => {
   try {
-    res.send("Bắt đầu kiểm tra");
+    console.log("Bắt đầu kiểm tra");
     await abc();
     res.send("Đã kiểm tra quests!");
   } catch (error) {
