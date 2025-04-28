@@ -69,7 +69,7 @@ async function checkSeiQuests() {
     const $ = cheerio.load(response.data);
 
     const hasQuestsWithRewards =
-      $("h2:contains('Quests with Rewards')").length > 0;
+      $("h2:contains('Quests with Rewards')").length < 0;
 
     if (hasQuestsWithRewards) {
       console.log("🚀 Phát hiện new QUEST SEI!");
