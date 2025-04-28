@@ -47,15 +47,27 @@ async function checkNearQuests() {
           $("a:contains('Stake $BRRR for BOOSTED Rewards')").length > 0;
         if (hasStakeLink == 1) {
         } else {
-          sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
+          for (let i = 0; i < 10; i++) {
+            sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
+
+            await delay(18000);
+          }
         }
       } else {
-        sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
+        for (let i = 0; i < 10; i++) {
+          sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
+
+          await delay(18000);
+        }
       }
     }
     if (hasNearOnboarding || hasJourneys) {
       console.log("🚀 Phát hiện thay đổi Near!");
-      sendNotification("🚀 Đã phát hiện thay đổi Near!");
+      for (let i = 0; i < 10; i++) {
+        sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
+
+        await delay(18000);
+      }
     } else {
       console.log("Near chưa có thay đổi");
     }
@@ -73,11 +85,11 @@ async function checkSeiQuests() {
     const hasQuestsWithRewards =
       $("h2:contains('Quests with Rewards')").length > 0;
 
-    if (!hasQuestsWithRewards) {
+    if (hasQuestsWithRewards) {
       console.log("🚀 Phát hiện new QUEST SEI!");
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 10; i++) {
         sendNotification("🚀 Đã phát hiện New Quest SEI!");
-        await delay(16000);
+        await delay(18000);
       }
     } else {
       console.log("SEI chưa có thay đổi");
@@ -99,7 +111,12 @@ async function checkSeiDefiJourney() {
 
     if (bridgeAssetHeader && !specialSpan) {
       console.log("🚀 Phát hiện FIX LỖI QUEST SEI!");
-      sendNotification("🚀 Phát hiện FIX LỖI QUEST SEI!");
+
+      for (let i = 0; i < 10; i++) {
+        sendNotification("🚀 Phát hiện FIX LỖI QUEST SEI!");
+
+        await delay(18000);
+      }
     } else {
       console.log("SEI DeFi Journey chưa có thay đổi");
     }
@@ -108,15 +125,60 @@ async function checkSeiDefiJourney() {
   }
 }
 
+async function checkFLOWQuests() {
+  try {
+    const url = "https://flipsidecrypto.xyz/earn/flow";
+    const response = await axios.get(url);
+    const $ = cheerio.load(response.data);
+
+    const hasQuestsWithRewards =
+      $("h2:contains('Quests with Rewards')").length > 0;
+    const hasJourneys = $("h2:contains('Journeys')").length > 0;
+    if (hasQuestsWithRewards || hasJourneys) {
+      console.log("🚀 Phát hiện new QUEST SEI!");
+      for (let i = 0; i < 10; i++) {
+        sendNotification("🚀 Đã phát hiện New Quest FLOW!");
+        await delay(18000);
+      }
+    } else {
+      console.log("SEI chưa có thay đổi");
+    }
+  } catch (err) {
+    console.error("❌ Lỗi khi kiểm tra SEI:", err.message);
+  }
+}
+async function checkKAIAQuests() {
+  try {
+    const url = "https://flipsidecrypto.xyz/earn/kaia";
+    const response = await axios.get(url);
+    const $ = cheerio.load(response.data);
+
+    const hasQuestsWithRewards =
+      $("h2:contains('Quests with Rewards')").length > 0;
+    const hasJourneys = $("h2:contains('Journeys')").length > 0;
+
+    if (hasQuestsWithRewards || hasJourneys) {
+      console.log("🚀 Phát hiện new QUEST SEI!");
+      for (let i = 0; i < 10; i++) {
+        sendNotification("🚀 Đã phát hiện New Quest KAIA!");
+        await delay(18000);
+      }
+    } else {
+      console.log("SEI chưa có thay đổi");
+    }
+  } catch (err) {
+    console.error("❌ Lỗi khi kiểm tra SEI:", err.message);
+  }
+}
 // Hàm kiểm tra quest sẽ chạy khi có yêu cầu từ HTTP request
 async function abc() {
   console.log("=== CHECKING Flipside Quests ===");
 
-  sendNotification("🚀 Đang kiểm tra quests...");
-
   await checkNearQuests();
   await checkSeiQuests();
   await checkSeiDefiJourney();
+  await checkFLOWQuests();
+  await checkKAIAQuests();
 }
 
 // Endpoint để bắt đầu kiểm tra quests
