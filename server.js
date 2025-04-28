@@ -47,26 +47,26 @@ async function checkNearQuests() {
           $("a:contains('Stake $BRRR for BOOSTED Rewards')").length > 0;
         if (hasStakeLink == 1) {
         } else {
-          for (let i = 0; i < 10; i++) {
+          for (let i = 0; i < 20; i++) {
             sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
 
-            await delay(18000);
+            await delay(15000);
           }
         }
       } else {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 20; i++) {
           sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
 
-          await delay(18000);
+          await delay(15000);
         }
       }
     }
     if (hasNearOnboarding || hasJourneys) {
       console.log("🚀 Phát hiện thay đổi Near!");
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 20; i++) {
         sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
 
-        await delay(18000);
+        await delay(15000);
       }
     } else {
       console.log("Near chưa có thay đổi");
@@ -87,9 +87,9 @@ async function checkSeiQuests() {
 
     if (hasQuestsWithRewards) {
       console.log("🚀 Phát hiện new QUEST SEI!");
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 20; i++) {
         sendNotification("🚀 Đã phát hiện New Quest SEI!");
-        await delay(18000);
+        await delay(15000);
       }
     } else {
       console.log("SEI chưa có thay đổi");
@@ -112,10 +112,10 @@ async function checkSeiDefiJourney() {
     if (bridgeAssetHeader && !specialSpan) {
       console.log("🚀 Phát hiện FIX LỖI QUEST SEI!");
 
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 20; i++) {
         sendNotification("🚀 Phát hiện FIX LỖI QUEST SEI!");
 
-        await delay(18000);
+        await delay(15000);
       }
     } else {
       console.log("SEI DeFi Journey chưa có thay đổi");
@@ -136,9 +136,9 @@ async function checkFLOWQuests() {
     const hasJourneys = $("h2:contains('Journeys')").length > 0;
     if (hasQuestsWithRewards || hasJourneys) {
       console.log("🚀 Phát hiện new QUEST SEI!");
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 20; i++) {
         sendNotification("🚀 Đã phát hiện New Quest FLOW!");
-        await delay(18000);
+        await delay(15000);
       }
     } else {
       console.log("SEI chưa có thay đổi");
@@ -159,9 +159,9 @@ async function checkKAIAQuests() {
 
     if (hasQuestsWithRewards || hasJourneys) {
       console.log("🚀 Phát hiện new QUEST SEI!");
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 20; i++) {
         sendNotification("🚀 Đã phát hiện New Quest KAIA!");
-        await delay(18000);
+        await delay(15000);
       }
     } else {
       console.log("SEI chưa có thay đổi");
