@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^1.9.0",
+    "cheerio": "^1.0.0",
     "express": "^4.21.2",
     "pushover-notifications": "^1.2.3"
   }
