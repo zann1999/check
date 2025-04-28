@@ -41,7 +41,7 @@ async function checkNearQuests() {
 
     if (hasNearOnboarding || hasJourneys || hasQuestsWithRewards) {
       console.log("🚀 Phát hiện thay đổi Near!");
-      sendNotification("🚀 Đã phát hiện thay đổi Quest Near!");
+      sendNotification("🚀 Đtesttsadsads!");
     } else {
       console.log("Near chưa có thay đổi");
     }
@@ -94,13 +94,11 @@ async function checkSeiDefiJourney() {
 async function abc() {
   while (true) {
     console.log("=== CHECKING Flipside Quests ===");
+    sendNotification("🚀 Đtesttsadsads!");
 
     await checkNearQuests();
     await checkSeiQuests();
     await checkSeiDefiJourney();
-
-    console.log("=== Đợi 3 phút rồi kiểm tra lại ===\n");
-    await new Promise((resolve) => setTimeout(resolve, 180000)); // 3 phút
   }
 }
 
