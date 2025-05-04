@@ -180,7 +180,6 @@ async function abc() {
   await checkFLOWQuests();
   await checkKAIAQuests();
 }
-abc();
 
 // Endpoint để bắt đầu kiểm tra quests
 app.get("/start-check", async (req, res) => {
