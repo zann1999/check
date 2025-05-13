@@ -41,25 +41,25 @@ async function checkNearQuests() {
     const hasQuestsWithRewards =
       $("h2:contains('Quests with Rewards')").length > 0;
     if (hasQuestsWithRewards) {
-      const hasSpecialDiv = $("div.flex.flex-col.p-4.pb-1.space-y-0").length;
-      if (hasSpecialDiv == 1) {
-        const hasStakeLink =
-          $("a:contains('Stake $BRRR for BOOSTED Rewards')").length > 0;
-        if (hasStakeLink == 1) {
-        } else {
-          for (let i = 0; i < 20; i++) {
-            sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
+      // const hasSpecialDiv = $("div.flex.flex-col.p-4.pb-1.space-y-0").length;
+      // if (hasSpecialDiv == 1) {
+      //   const hasStakeLink =
+      //     $("a:contains('Stake $BRRR for BOOSTED Rewards')").length > 0;
+      //   if (hasStakeLink == 1) {
+      //   } else {
+      //     for (let i = 0; i < 20; i++) {
+      //       sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
 
-            await delay(15000);
-          }
-        }
-      } else {
-        for (let i = 0; i < 20; i++) {
-          sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
+      //       await delay(15000);
+      //     }
+      //   }
+      // } else {
+      for (let i = 0; i < 20; i++) {
+        sendNotification("🚀 Đã phát hiện thay đổi quest Near!");
 
-          await delay(15000);
-        }
+        await delay(15000);
       }
+      // }
     }
     if (hasNearOnboarding || hasJourneys) {
       console.log("🚀 Phát hiện thay đổi Near!");
