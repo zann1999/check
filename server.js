@@ -170,13 +170,38 @@ async function checkKAIAQuests() {
     console.error("❌ Lỗi khi kiểm tra SEI:", err.message);
   }
 }
+async function checkMARQuests() {
+  try {
+    const url = "https://flipsidecrypto.xyz/earn/marinade";
+    const response = await axios.get(url);
+    const $ = cheerio.load(response.data);
+
+    const hasQuestsWithRewards =
+      $("h2:contains('Quests with Rewards')").length > 0;
+    const hasJourneys = false;
+    // $("h2:contains('Journeys')").length > 0;
+
+    if (hasQuestsWithRewards || hasJourneys) {
+      console.log("🚀 Phát hiện new QUEST KAIA!");
+      for (let i = 0; i < 20; i++) {
+        sendNotification("🚀 Đã phát hiện New Quest KAIA!");
+        await delay(15000);
+      }
+    } else {
+      console.log("KAIA chưa có thay đổi");
+    }
+  } catch (err) {
+    console.error("❌ Lỗi khi kiểm tra SEI:", err.message);
+  }
+}
 // Hàm kiểm tra quest sẽ chạy khi có yêu cầu từ HTTP request
 async function abc() {
   console.log("=== CHECKING Flipside Quests ===");
 
   await checkNearQuests();
   await checkSeiQuests();
-  await checkSeiDefiJourney();
+  await checkMARQuests();
+  // await checkSeiDefiJourney();
   await checkFLOWQuests();
   await checkKAIAQuests();
 }
