@@ -9,8 +9,8 @@ function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 const pushover = new Push({
-  token: "ac8jh3ku2ust97s7j47oa7ug4h8r48", // Thay bằng API Token của bạn
-  user: "u1pvc4wjjwefey9sqnrfx3axzijyzn", // Thay bằng User Key của bạn
+  token: "arvj7iibe9uzwywfvq87u5qfnmps8c", // Thay bằng API Token của bạn
+  user: "uu81cws3a4jt6gp3nxh2xp6rvq1a37", // Thay bằng User Key của bạn
 });
 
 function sendNotification(message) {
